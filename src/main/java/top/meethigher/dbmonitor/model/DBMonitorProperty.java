@@ -17,20 +17,11 @@ public class DBMonitorProperty {
      */
     private String driver;
 
-    /**
-     * 数据库地址
-     */
-    private String host;
 
     /**
-     * 数据库端口
+     * jdbcUrl
      */
-    private Integer port;
-
-    /**
-     * 数据库名称
-     */
-    private String database;
+    private String jdbcUrl;
 
     /**
      * 数据库用户名
@@ -42,18 +33,21 @@ public class DBMonitorProperty {
      */
     private String password;
 
-    public DBMonitorProperty(String driver, String host, Integer port, String database, String username, String password) {
-        this.driver = driver;
-        this.host = host;
-        this.port = port;
-        this.database = database;
-        this.username = username;
-        this.password = password;
-    }
 
     public DBMonitorProperty() {
     }
 
+    public DBMonitorProperty(String driver, String uri, String username, String password) {
+        this.driver = driver;
+        this.jdbcUrl = uri;
+        this.username = username;
+        this.password = password;
+    }
+
+    public DBMonitorProperty(String driver, String jdbcUrl) {
+        this.driver = driver;
+        this.jdbcUrl = jdbcUrl;
+    }
 
     public String getDriver() {
         return driver;
@@ -63,20 +57,12 @@ public class DBMonitorProperty {
         this.driver = driver;
     }
 
-    public String getHost() {
-        return host;
+    public String getJdbcUrl() {
+        return jdbcUrl;
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public void setPort(Integer port) {
-        this.port = port;
+    public void setJdbcUrl(String jdbcUrl) {
+        this.jdbcUrl = jdbcUrl;
     }
 
     public String getUsername() {
@@ -93,13 +79,5 @@ public class DBMonitorProperty {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDatabase() {
-        return database;
-    }
-
-    public void setDatabase(String database) {
-        this.database = database;
     }
 }

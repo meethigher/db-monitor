@@ -8,34 +8,35 @@ package top.meethigher.dbmonitor.constant;
  */
 public enum DBDriver {
     /**
-     * oracle
+     * oracle-测试环境为11g与19c
      */
     ORACLE("oracle", "oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@%s:%d/%s"),
 
     /**
-     * mysql8，新版驱动应该会兼容旧版本数据库
+     * mysql8，新版驱动会兼容旧版本数据库
      */
     MYSQL8("mysql8", "com.mysql.cj.jdbc.Driver", "jdbc:mysql://%s:%d/%s"),
 
     /**
-     * sqlserver
+     * mysql5
+     */
+    MYSQL5("mysql5", "com.mysql.jdbc.Driver", "jdbc:mysql://%s:%d/%s"),
+
+    /**
+     * sqlserver-测试环境为2019
      */
     SQLSERVER("sqlserver", "com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://%s:%d;DatabaseName=%s"),
 
     /**
-     * psql
+     * db2
      */
-    PSQL("postgresql", "org.postgresql.Driver", "jdbc:postgresql://%s:%d/%s"),
+    DB2("db2", "com.ibm.db2.jcc.DB2Driver", "jdbc:db2://%s:%d/%s"),
 
     /**
-     * mongo
+     * psql-测试环境为psql11
      */
-    MONGO("mongodb", "mongodb", "mongodb"),
+    PSQL("postgresql", "org.postgresql.Driver", "jdbc:postgresql://%s:%d/%s");
 
-    /**
-     * 其他自定义的数据库
-     */
-    OTHER("other", "other", "other");
     final public String name;
     final public String driverClass;
     final public String jdbcUrl;
@@ -49,8 +50,8 @@ public enum DBDriver {
     /**
      * 驱动class
      *
-     * @param driverClass
-     * @return
+     * @param driverClass 驱动名称
+     * @return 驱动枚举
      */
     public static DBDriver getByDriverClass(String driverClass) {
         if (driverClass == null) {
@@ -61,6 +62,6 @@ public enum DBDriver {
                 return x;
             }
         }
-        return DBDriver.OTHER;
+        return DBDriver.PSQL;
     }
 }
