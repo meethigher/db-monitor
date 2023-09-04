@@ -7,10 +7,15 @@ import top.meethigher.dbmonitor.model.sizemonitor.DBSize;
 import top.meethigher.dbmonitor.model.structuremonitor.TableStructure;
 import top.meethigher.dbmonitor.service.DBMonitor;
 import top.meethigher.dbmonitor.service.DefaultDBMonitor;
+import top.meethigher.dboperation.model.DataConnectionInfo;
+import top.meethigher.dboperation.model.DatabaseSize;
+import top.meethigher.dboperation.service.DatabaseOperation;
+import top.meethigher.dboperation.service.impl.PostgreSQLOperation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 单元测试
